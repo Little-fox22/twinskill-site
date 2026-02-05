@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwinSkill - Детские курсы программирования и английского</title>
+    
+    <!-- ПРОСТАЯ ИКОНКА САЙТА -->
+    <link rel="icon" href="icon.png" type="image/png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Баннер с информацией о боте -->
+    <div class="bot-banner">
+        <div class="container">
+            <span>Есть вопросы? Напишите нашему боту</span>
+            <a href="https://t.me/TwinSkill_Bot" target="_blank">
+                <i class="fab fa-telegram"></i>
+                @TwinSkill_Bot
+            </a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+        <a href="#" class="logo" onclick="showPage('home'); return false;">
+            <!-- Картинка-иконка перед названием -->
+            <img src="icon.png" alt="TwinSkill Icon" class="header-icon">
+            <span class="logo-part-1">Twin</span>
+            <span class="logo-part-2">Skill</span>
+            <div class="logo-icon">
+                <i class="fas fa-code"></i>
+                <i class="fas fa-language"></i>
+            </div>
+        </a>
+            
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="main-menu">
+                    <li><a href="#" class="nav-link active" data-page="home">Главная</a></li>
+                    <li><a href="#" class="nav-link" data-page="courses">Курсы</a></li>
+                    <li><a href="#" class="nav-link" data-page="teachers">Преподаватели</a></li>
+                    <li><a href="#" class="nav-link" data-page="tests">Помощь с определением курса</a></li> 
+                    <li><a href="#" class="nav-link" data-page="free-lesson">Бесплатный урок</a></li>
+                    <li><a href="#" class="nav-link" data-page="pricing">Цены и расписание</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <section id="home-page" class="page">
+        <!-- Hero Section -->
+       <div class="hero">
+    <div class="container">
+        <!-- Картинка перед заголовком -->
+        <div class="hero-icon-container">
+            <img src="icon.png" alt="TwinSkill" class="hero-icon">
+        </div>
+        
+        <h1>Детские курсы программирования и английского</h1>
+        <p>Помогаем детям освоить современные технологии и языки в увлекательной игровой форме. Профессиональные преподаватели, индивидуальный подход и современные методики.</p>
+                <a href="#" class="cta-button pulse-animation" onclick="showPage('free-lesson'); return false;">
+                    <span>Записаться на бесплатный урок</span>
+                    <i class="fas fa-arrow-right button-icon"></i>
+                </a>
+                
+                <!-- Animated icons -->
+                <div class="animated-icons">
+                    <div class="icon-circle floating">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <div class="icon-circle floating delay-1">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="icon-circle floating delay-2">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="icon-circle floating delay-3">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Courses Preview -->
+        <div class="courses-section">
+            <div class="container">
+                <h2 class="section-title">Наши курсы</h2>
+                <p class="section-subtitle">Предлагаем разнообразные курсы программирования и английского языка для детей разных возрастов и уровней подготовки</p>
+                
+                <div class="courses-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-laptop-code bounce-icon"></i>
+                        Программирование
+                    </h3>
+                    <div class="courses-grid" id="programming-courses">
+                        <!-- Courses will be loaded by JavaScript -->
+                    </div>
+                </div>
+                
+                <div class="courses-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-language bounce-icon"></i>
+                        Английский язык
+                    </h3>
+                    <div class="courses-grid" id="english-courses">
+                        <!-- Courses will be loaded by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Page -->
+    <section id="courses-page" class="page" style="display: none;">
+        <div class="container page-content">
+            <h1 class="page-title">
+                <i class="fas fa-graduation-cap scale-on-hover"></i>
+                Все курсы
+            </h1>
+            <div id="all-courses" class="fade-in">
+                <!-- All courses will be loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Page -->
+    <section id="teachers-page" class="page" style="display: none;">
+        <div class="container page-content">
+            <h1 class="page-title">
+                <i class="fas fa-chalkboard-teacher scale-on-hover"></i>
+                Наши преподаватели
+            </h1>
+            <p>Наши преподаватели - профессионалы с высшим образованием в своих областях и опытом преподавания детям. Мы используем индивидуальный подход к каждому ученику.</p>
+            
+            <div class="teachers-grid">
+                <div class="teacher-card slide-up">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="teacher-name">Каркота Александра</h3>
+                    <div class="teacher-subject">Программирование на Python и Unity</div>
+                    <div class="teacher-education">
+                        <i class="fas fa-graduation-cap"></i>
+                        Высшее образование в области компьютерных наук
+                    </div>
+                    <p>Опыт преподавания: 4 года. Специализируется на обучении детей программированию через создание игр и приложений.</p>
+                    <div class="teacher-skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Unity</span>
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Разработка игр</span>
+                    </div>
+                </div>
+                
+                <div class="teacher-card slide-up delay-1">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="teacher-name">Петрашевич Майя</h3>
+                    <div class="teacher-subject">Английский язык</div>
+                    <div class="teacher-education">
+                        <i class="fas fa-graduation-cap"></i>
+                        Высшее лингвистическое образование
+                    </div>
+                    <p>Опыт преподавания: 6 лет. Сертифицированный преподаватель с опытом работы в языковых школах и индивидуальным подходом к каждому ученику.</p>
+                    <div class="teacher-skills">
+                        <span class="skill-tag">CELTA</span>
+                        <span class="skill-tag">Разговорный</span>
+                        <span class="skill-tag">Школьная программа</span>
+                        <span class="skill-tag">Business English</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tests Page -->
+    <section id="tests-page" class="page" style="display: none;">
+        <div class="container page-content">
+            <h1 class="page-title">
+                <i class="fas fa-clipboard-check scale-on-hover"></i>
+                Тесты для определения уровня
+            </h1>
+            <p>Пройдите наши тесты, чтобы определить уровень английского языка и подобрать оптимальный курс для вашего ребенка.</p>
+            
+            <div class="tests-grid">
+                <!-- Тест 1: Уровень английского -->
+                <div class="test-card slide-up">
+                    <div class="test-header" style="background-color: var(--primary-blue);">
+                        <i class="fas fa-language"></i>
+                        <h3>Тест на уровень английского</h3>
+                    </div>
+                    <div class="test-content">
+                        <p class="test-description">20 вопросов для определения текущего уровня знания английского языка (Beginner, Elementary, Pre-Intermediate, Intermediate).</p>
+                        <div class="test-details">
+                            <div class="test-info">
+                                <i class="fas fa-clock"></i>
+                                <span>10-15 минут</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-question-circle"></i>
+                                <span>20 вопросов</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>Для детей 7-17 лет</span>
+                            </div>
+                        </div>
+                        <button class="cta-button small start-test-btn" data-test="english">
+                            <span>Начать тест</span>
+                            <i class="fas fa-play button-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Тест 2: Выбор курса -->
+                <div class="test-card slide-up delay-1">
+                    <div class="test-header" style="background-color: var(--primary-purple);">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h3>Тест для выбора курса</h3>
+                    </div>
+                    <div class="test-content">
+                        <p class="test-description">Поможем определить, какой курс программирования подойдет вашему ребенку на основе возраста, интересов и опыта.</p>
+                        <div class="test-details">
+                            <div class="test-info">
+                                <i class="fas fa-clock"></i>
+                                <span>5-7 минут</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-question-circle"></i>
+                                <span>10 вопросов</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-child"></i>
+                                <span>Для родителей и детей</span>
+                            </div>
+                        </div>
+                        <button class="cta-button small start-test-btn" data-test="course">
+                            <span>Начать тест</span>
+                            <i class="fas fa-play button-icon"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Тест 3: Интересы ребенка -->
+                <div class="test-card slide-up delay-2">
+                    <div class="test-header" style="background-color: var(--primary-green);">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Тест на интересы</h3>
+                    </div>
+                    <div class="test-content">
+                        <p class="test-description">Определим, что больше интересует ребенка: создание игр, программирование ботов или изучение английского через игры.</p>
+                        <div class="test-details">
+                            <div class="test-info">
+                                <i class="fas fa-clock"></i>
+                                <span>3-5 минут</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-question-circle"></i>
+                                <span>8 вопросов</span>
+                            </div>
+                            <div class="test-info">
+                                <i class="fas fa-lightbulb"></i>
+                                <span>Для детей 6-14 лет</span>
+                            </div>
+                        </div>
+                        <button class="cta-button small start-test-btn" data-test="interests">
+                            <span>Начать тест</span>
+                            <i class="fas fa-play button-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Контейнер для теста -->
+            <div id="test-container" class="test-container" style="display: none;">
+                <!-- Здесь будет отображаться тест динамически -->
+            </div>
+            
+            <!-- Результаты теста -->
+            <div id="test-results" class="test-results" style="display: none;">
+                <!-- Здесь будут отображаться результаты -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Lesson Page -->
+    <section id="free-lesson-page" class="page" style="display: none;">
+        <div class="container page-content">
+            <h1 class="page-title">
+                <i class="fas fa-gift scale-on-hover"></i>
+                Бесплатный пробный урок
+            </h1>
+            <p>Запишитесь на бесплатный пробный урок, чтобы познакомиться с нашим преподавателем, методикой и выбрать подходящий курс для вашего ребенка.</p>
+            
+            <div class="free-lesson slide-up">
+                <form id="free-lesson-form">
+                    <div class="form-group">
+                        <label for="child-name">
+                            <i class="fas fa-child form-icon"></i>
+                            Имя ребенка
+                        </label>
+                        <input type="text" id="child-name" required placeholder="Введите имя ребенка">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="child-age">
+                            <i class="fas fa-birthday-cake form-icon"></i>
+                            Возраст ребенка
+                        </label>
+                        <input type="number" id="child-age" min="6" max="17" required placeholder="Введите возраст">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parent-name">
+                            <i class="fas fa-user form-icon"></i>
+                            Имя родителя
+                        </label>
+                        <input type="text" id="parent-name" required placeholder="Введите ваше имя">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">
+                            <i class="fas fa-phone form-icon"></i>
+                            Телефон для связи
+                        </label>
+                        <input type="tel" id="phone" required placeholder="Введите номер телефона">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">
+                            <i class="fas fa-envelope form-icon"></i>
+                            Email
+                        </label>
+                        <input type="email" id="email" required placeholder="Введите email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="course-interest">
+                            <i class="fas fa-book form-icon"></i>
+                            Интересующий курс
+                        </label>
+                        <select id="course-interest" required>
+                            <option value="">Выберите курс</option>
+                            <option value="python-basics">Python - Основы программирования</option>
+                            <option value="python-bots">Python - Создание Telegram ботов</option>
+                            <option value="python-games">Python - Создание 2D игр</option>
+                            <option value="unity-2d">Unity - 2D игры</option>
+                            <option value="unity-3d">Unity - 3D игры</option>
+                            <option value="english-school">Английский - Школьная программа</option>
+                            <option value="english-conversation">Английский - Разговорная речь</option>
+                        </select>
+                    </div>
+                    
+                    <div class="notification-info">
+                        <p><i class="fas fa-info-circle"></i> После отправки формы:</p>
+                        <ul>
+                            <li>Ваша заявка будет обработана в течение 24 часов</li>
+                            <li>С вами свяжется наш менеджер для уточнения деталей</li>
+                            <li>Вы можете задать вопросы в Telegram боте</li>
+                        </ul>
+                    </div>
+                    
+                    <button type="submit" class="cta-button submit-button">
+                        <span>Записаться на бесплатный урок</span>
+                        <i class="fas fa-paper-plane button-icon"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Page -->
+    <section id="pricing-page" class="page" style="display: none;">
+        <div class="container page-content">
+            <h1 class="page-title">
+                <i class="fas fa-calendar-alt scale-on-hover"></i>
+                Цены и расписание занятий
+            </h1>
+            <p>Ниже представлена подробная информация о стоимости и продолжительности всех наших курсов.</p>
+            
+            <div class="pricing-table slide-up">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Курс</th>
+                            <th>Длительность занятия</th>
+                            <th>Количество занятий</th>
+                            <th>Стоимость занятия</th>
+                            <th>Общая стоимость курса</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricing-table-body">
+                        <!-- Pricing data will be loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="schedule-info fade-in">
+                <h3><i class="fas fa-clock"></i> Расписание занятий</h3>
+                <p><strong>Формат занятий:</strong> Только онлайн</p>
+                <p><strong>Время занятий:</strong> Подбирается индивидуально для каждого ученика</p>
+                <p><strong>Тип занятий:</strong> Индивидуальные занятия. При необходимости можно согласовать групповые занятия.</p>
+                <p>Мы работаем с понедельника по воскресенье, с 9:00 до 21:00. Конкретное время согласовывается с преподавателем для максимального удобства ученика.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <span class="logo-part-1">Twin</span>
+                        <span class="logo-part-2">Skill</span>
+                    </div>
+                    <p>Детские курсы программирования и английского языка. Современные методики, профессиональные преподаватели и индивидуальный подход к каждому ребенку.</p>
+                    <div class="social-icons">
+                        <a href="https://t.me/TwinSkill_Bot" target="_blank" class="social-icon" title="Telegram Bot">
+                            <i class="fas fa-robot"></i>
+                        </a>
+                        <a href="https://t.me/TwinSkill_Bot" target="_blank" class="social-icon" title="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="mailto:wearesomecompany@gmail.com" class="social-icon" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Быстрые ссылки</h3>
+                    <ul>
+                        <li><a href="#" class="footer-link" onclick="showPage('home'); return false;">Главная</a></li>
+                        <li><a href="#" class="footer-link" onclick="showPage('courses'); return false;">Все курсы</a></li>
+                        <li><a href="#" class="footer-link" onclick="showPage('teachers'); return false;">Преподаватели</a></li>
+                        <li><a href="#" class="footer-link" onclick="showPage('tests'); return false;">Помощь с определением курса</a></li
+                        <li><a href="#" class="footer-link" onclick="showPage('free-lesson'); return false;">Бесплатный урок</a></li>
+                        <li><a href="#" class="footer-link" onclick="showPage('pricing'); return false;">Цены и расписание</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Контакты</h3>
+                    <p>
+                        <i class="fas fa-envelope contact-icon"></i> 
+                        <a href="mailto:wearesomecompany@gmail.com" class="contact-link">wearesomecompany@gmail.com</a>
+                    </p>
+                    <p>
+                        <i class="fab fa-telegram contact-icon"></i> 
+                        <a href="https://t.me/TwinSkill_Bot" target="_blank" class="contact-link">@TwinSkill_Bot</a>
+                    </p>
+                    <p><i class="fas fa-globe contact-icon"></i> Занятия только онлайн</p>
+                    <p><i class="fas fa-clock contact-icon"></i> Пн-Вс: 9:00-22:00 (индивидуально)</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 TwinSkill. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/courses-data.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
